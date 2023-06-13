@@ -14,7 +14,6 @@ interface ColumnProps {
 
 const Colunm: React.FC<ColumnProps> = ( props ) => {
     const [showForm, setShowForm] = useState(false);
-    const [visibility, setVisibility] = useState(true);
     const [cardList, setCardList] = useState<MyCard[]>([]);
 
     const openModal = () => {
@@ -64,7 +63,7 @@ const Colunm: React.FC<ColumnProps> = ( props ) => {
                 </div>
                 <Droppable droppableId={crypto.randomUUID()}>
                     {(provided) => (
-                        visibility && <div className="columnBody" {...provided.droppableProps} ref={provided.innerRef}>
+                        <div className="columnBody" {...provided.droppableProps} ref={provided.innerRef}>
                             {cardList.map((card, index) => {
                                 console.log(card)
                                 return (
