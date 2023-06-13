@@ -64,20 +64,24 @@ const Colunm: React.FC<ColumnProps> = ( props ) => {
                 </div>
                 <Droppable droppableId={crypto.randomUUID()}>
                     {(provided) => (
-                        visibility && <div className="columnBody" {...provided.droppableProps} ref={provided.innerRef}>
-                            {cardList.map((card, index) => {
-                                console.log(card)
-                                return (
-                                <Draggable key={card.id} draggableId={card.id} index={index}>
-                                    {(provided) => (
-                                        <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
-                                            <Card cardName={card.cardName} onDelete={() => deleteCard(card.id)} editCard={editCard} id={card.id} />
-                                        </div>
-                                    )}
-                                </Draggable>
-                            )})}
-                            {provided.placeholder}
-                        </div>
+                        <>
+                            {
+                                visibility && <div className="columnBody" {...provided.droppableProps} ref={provided.innerRef}>
+                                    {cardList.map((card, index) => {
+                                        console.log(card)
+                                        return (
+                                        <Draggable key={card.id} draggableId={card.id} index={index}>
+                                            {(provided) => (
+                                                <div ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                                                    <Card cardName={card.cardName} onDelete={() => deleteCard(card.id)} editCard={editCard} id={card.id} />
+                                                </div>
+                                            )}
+                                        </Draggable>
+                                    )})}
+                                    {provided.placeholder}
+                                </div>
+                            }
+                        </>
                     )}                   
                 </Droppable>
                 <div className="addCard">
