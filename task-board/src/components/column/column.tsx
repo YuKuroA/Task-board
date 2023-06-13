@@ -12,13 +12,9 @@ interface ColumnProps {
     onDelete: () => void;
 }
 
-// const firstCard:MyCard = ({
-//     id: '1',
-//     cardName: 'First Card'
-// });
-
-const Colunm: React.FC<ColumnProps> = (props) => {
+const Colunm: React.FC<ColumnProps> = ( props ) => {
     const [showForm, setShowForm] = useState(false);
+    const [visibility, setVisibility] = useState(true);
     const [cardList, setCardList] = useState<MyCard[]>([]);
 
     const openModal = () => {
@@ -68,7 +64,7 @@ const Colunm: React.FC<ColumnProps> = (props) => {
                 </div>
                 <Droppable droppableId={crypto.randomUUID()}>
                     {(provided) => (
-                        <div className="columnBody" {...provided.droppableProps} ref={provided.innerRef}>
+                        visibility && <div className="columnBody" {...provided.droppableProps} ref={provided.innerRef}>
                             {cardList.map((card, index) => {
                                 console.log(card)
                                 return (
