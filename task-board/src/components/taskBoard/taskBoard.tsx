@@ -12,6 +12,7 @@ const firstColumn:MyColumn = ({
 const TaskBoard:React.FC = () => {
     const [showForm, setShowForm] = useState(false);
     const [columnList, setColumnList] = useState ([firstColumn]);
+    const [selectedTask, setSelectedTask] = useState('');
 
     const openModal = () => {
         setShowForm(true);
@@ -30,6 +31,10 @@ const TaskBoard:React.FC = () => {
     const deleteColumn = (id:string) => {
         const newColumnList = columnList.filter(column => column.id !== id);
         setColumnList(newColumnList);
+    }
+
+    const selectCurrentTask = (taskId: string) => {
+        setSelectedTask(taskId);
     }
 
     const TaskBoard = (

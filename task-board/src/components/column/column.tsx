@@ -42,6 +42,11 @@ const Colunm: React.FC<ColumnProps> = ( props ) => {
         setCardList(newCardList)
     }
 
+    const showSuccessSnackbar = () => {
+        // TODO: implement snackbar logic
+        console.log('snackbar');
+    }
+
     const handleOnDragEnd = (result: any) => {
         if (!result.destination) {
             return;

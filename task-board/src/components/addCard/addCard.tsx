@@ -22,7 +22,13 @@ const AddCard: React.FC<FormProps> = ({addCard, closeModal}) => {
             cardName: target.cardName.value
         })
 
-        closeModal()
+        logCardCreation();
+        closeModal();
+    }
+    
+    const logCardCreation = () => {
+        // TODO: Log event of creation card
+        console.log('card created')
     }
 
     const addCardForm = (
