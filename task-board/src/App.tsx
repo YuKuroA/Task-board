@@ -7,16 +7,17 @@ import { useState } from "react";
 
 
 function App() {
-  const [myLogin, setMyLogin] = useState('')
+  const [userLogin, setUserLogin] = useState('');
 
   const passLogin = (login:string) => {
-    setMyLogin(login)
-  }
+    setUserLogin(login);
+  };
+  
   return (
     <BrowserRouter>
       <Routes>
         <Route path='*' element={<SignInPage passLogin={passLogin} />} />
-        <Route path='user-board' element={<UserBoard login={myLogin} />} />
+        <Route path='user-board' element={<UserBoard login={userLogin} />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,8 +1,8 @@
 import { useState } from "react";
-import AddColumn from "../addColumn/addColumn"
+import AddColumn from "../addColumn/addColumn";
 import { MyColumn } from "../../types/columntype";
 import Colunm from "../column/column";
-import './taskBoard.css'
+import './taskBoard.css';
 
 const firstColumn:MyColumn = ({
     id: '1',
@@ -11,16 +11,16 @@ const firstColumn:MyColumn = ({
 
 const TaskBoard:React.FC = () => {
     const [showForm, setShowForm] = useState(false);
-    const [columnList, setColumnList] = useState ([firstColumn]);
+    const [columnList, setColumnList] = useState([firstColumn]);
     const [selectedTask, setSelectedTask] = useState('');
 
     const openModal = () => {
         setShowForm(true);
-    };
+    }
     
     const closeModal = () => {
         setShowForm(false);
-    };
+    }
 
     const addColumn = (newColumn:MyColumn) => {
         const newColumnList = columnList.concat();
@@ -47,9 +47,9 @@ const TaskBoard:React.FC = () => {
                 {columnList.map(column => <Colunm key={column.id} columnName={column.columnName} onDelete={() => deleteColumn(column.id)}/>)}
             </div>
         </div>
-    )
+    );
 
-    return TaskBoard
+    return TaskBoard;
 }
 
-export default TaskBoard
+export default TaskBoard;

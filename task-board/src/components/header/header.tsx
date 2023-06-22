@@ -1,7 +1,7 @@
-import logoIcon from './Logo.svg'
-import menuIcon from './Menu.svg'
-import landscapeIcon from './Group 20.svg'
-import './header.css'
+import logoIcon from './Logo.svg';
+import menuIcon from './Menu.svg';
+import landscapeIcon from './Group 20.svg';
+import './header.css';
 import { useNavigate } from 'react-router-dom';
 
 function getUser() {
@@ -10,7 +10,7 @@ function getUser() {
 }
 
 interface HeaderProps {
-    login: string
+    login: string; 
 }
 
 const Header: React.FC<HeaderProps> = ({login}) => {
@@ -30,9 +30,9 @@ const Header: React.FC<HeaderProps> = ({login}) => {
                 <img src={menuIcon} alt="menu" />
             </div>
         </div>
-    )
+    );
 
-    return header
+    return header;
 }
 
-export default Header
+export default Header;

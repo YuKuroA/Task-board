@@ -1,31 +1,26 @@
-import Header from "../../components/header/header"
-import TaskBoard from "../../components/taskBoard/taskBoard"
-import './userBoard.css'
-
+import Header from "../../components/header/header";
+import TaskBoard from "../../components/taskBoard/taskBoard";
+import './userBoard.css';
 
 function getUsers() {
     // TODO: Add fetching data about users
     return [];
 }
 
-
 interface UserBoardProps {
-    login: string
+    login: string;
 }
 
-const UserBoard: React.FC<UserBoardProps> = ({login}) => {
-
+const UserBoard: React.FC<UserBoardProps> = ({ login }) => {
     const users = getUsers();    
-
-
     const userBoard = (
         <div>
-            <Header login={login} />
+            <Header login={ login } />
             <TaskBoard />
         </div>
-    )
+    );
 
-    return userBoard
+    return userBoard;
 }
 
-export default UserBoard
+export default UserBoard;

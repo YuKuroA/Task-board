@@ -1,8 +1,8 @@
-import SignIn from "../../components/signIn/signIn"
-import './signInPage.css'
+import SignIn from "../../components/signIn/signIn";
+import './signInPage.css';
 
 interface SignInPageProps {
-    passLogin: (login:string) => void
+    passLogin: (login:string) => void;
 }
 
 const SignInPage: React.FC<SignInPageProps> = ({passLogin}) => {
@@ -10,9 +10,9 @@ const SignInPage: React.FC<SignInPageProps> = ({passLogin}) => {
         <div className="signInPage">
             <SignIn passLogin={passLogin} />
         </div>
-    )
+    );
 
-    return signInPage
+    return signInPage;
 }
 
-export default SignInPage
+export default SignInPage;

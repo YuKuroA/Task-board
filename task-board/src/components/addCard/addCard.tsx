@@ -1,16 +1,16 @@
-import React from "react"
-import abandonIcon from "./Abandon.svg"
-import './addCard.css'
+import React from "react";
+import abandonIcon from "./Abandon.svg";
+import './addCard.css';
 import 'typeface-inter';
 import { MyCard } from "../../types/cardtype";
 
 interface FormProps {
-    addCard: (newCard: MyCard) => void
-    closeModal: () => void
+    addCard: (newCard: MyCard) => void;
+    closeModal: () => void;
 }
 
 const AddCard: React.FC<FormProps> = ({addCard, closeModal}) => {
-    const createCard = (event : React.FormEvent<HTMLFormElement>) => {
+    const createCard = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const target = event.target as typeof event.target & {
@@ -20,7 +20,7 @@ const AddCard: React.FC<FormProps> = ({addCard, closeModal}) => {
         addCard({
             id: crypto.randomUUID(),
             cardName: target.cardName.value
-        })
+        });
 
         logCardCreation();
         closeModal();
@@ -28,7 +28,7 @@ const AddCard: React.FC<FormProps> = ({addCard, closeModal}) => {
     
     const logCardCreation = () => {
         // TODO: Log event of creation card
-        console.log('card created')
+        console.log('card created');
     }
 
     const addCardForm = (
@@ -39,9 +39,9 @@ const AddCard: React.FC<FormProps> = ({addCard, closeModal}) => {
                 <img src={abandonIcon} alt="abadon" onClick={closeModal} />
             </div>
         </form>
-    )
+    );
 
-    return addCardForm
+    return addCardForm;
 }
 
-export default AddCard
+export default AddCard;

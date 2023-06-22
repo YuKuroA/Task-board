@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import './card.css'
-import deleteIcon from "./Delete.svg"
+import './card.css';
+import deleteIcon from "./Delete.svg";
 import 'typeface-inter';
 import { format } from "path";
 import { MyCard } from "../../types/cardtype";
@@ -13,13 +13,13 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = (props) => {
-    const [showForm, setShowForm] = useState(false)
+    const [showEditCardForm, setShowEditCardForm] = useState(false);
 
     const callEdit = () => {
-        setShowForm(true)
+        setShowEditCardForm(true);
     }
 
-    const editMyCard = (event : React.FormEvent<HTMLFormElement>) => {    
+    const editMyCard = (event: React.FormEvent<HTMLFormElement>) => {    
         event.preventDefault();
 
         const target = event.target as typeof event.target & {
@@ -29,28 +29,31 @@ const Card: React.FC<CardProps> = (props) => {
         props.editCard({
             id: props.id,
             cardName: target.cardName.value
-        })
+        });
 
-        setShowForm(false)        
+        setShowEditCardForm(false);        
     }
     
     const Card = (
         <div>
-            {!showForm &&
-            <div className="card" onClick={callEdit}>
-                <p>{props.cardName}</p>
-                <img src={deleteIcon} alt="delete button" onClick={props.onDelete} />
-            </div>}
-            {showForm &&
-            <form onSubmit={editMyCard}>
-                <input type="text" name="cardName" />
-                <button type="submit">Submit</button>
-            </form>}
-        </div>
-        
-    )
+            {
+            !showEditCardForm &&
+                <div className="card" onClick={callEdit}>
+                    <p>{props.cardName}</p>
+                    <img src={deleteIcon} alt="delete button" onClick={props.onDelete} />
+                </div>
+            }
+            {
+            showEditCardForm &&
+                <form onSubmit={editMyCard}>
+                    <input type="text" name="cardName" />
+                    <button type="submit">Submit</button>
+                </form>
+            }
+        </div>    
+    );
 
-    return Card
+    return Card;
 }
 
-export default Card
+export default Card;

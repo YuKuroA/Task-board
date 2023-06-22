@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import './column.css'
-import deleteIcon from "./Delete.svg"
+import './column.css';
+import deleteIcon from "./Delete.svg";
 import Card from "../card/card";
 import AddCard from "../addCard/addCard";
 import 'typeface-inter';
@@ -18,11 +18,11 @@ const Colunm: React.FC<ColumnProps> = ( props ) => {
 
     const openModal = () => {
         setShowForm(true);
-    };
+    }
     
     const closeModal = () => {
         setShowForm(false);
-    };
+    }
 
     const addCard = (newCard:MyCard) => {
         const newCardList = cardList.concat();
@@ -39,7 +39,7 @@ const Colunm: React.FC<ColumnProps> = ( props ) => {
         const newCardList = cardList.concat();
         const index = newCardList.findIndex(item => item.id === newCard.id);
         newCardList[index] = newCard;
-        setCardList(newCardList)
+        setCardList(newCardList);
     }
 
     const showSuccessSnackbar = () => {
@@ -85,15 +85,21 @@ const Colunm: React.FC<ColumnProps> = ( props ) => {
                     )}                   
                 </Droppable>
                 <div className="addCard">
-                    {!showForm && <label onClick={openModal}>+ Add new card</label>}
-                    {showForm && <AddCard addCard={addCard} closeModal={closeModal} />}
+                    {
+                    !showForm && 
+                        <label onClick={openModal}>+ Add new card</label>
+                    }
+                    {
+                    showForm && 
+                        <AddCard addCard={addCard} closeModal={closeModal} />
+                    }
                 </div>
                 
             </div>
         </DragDropContext>
-    )
+    );
 
-    return Column
+    return Column;
 }
 
-export default Colunm
+export default Colunm;

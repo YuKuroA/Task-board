@@ -1,12 +1,12 @@
-import './signIn.css'
+import './signIn.css';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
 interface SignInProps {
-    passLogin: (login:string) => void
+    passLogin: (login:string) => void;
 }
 
-const users = [{login: 'admin', password: 'admin'}, {login: 'ordinary man', password: '123456'}]
+const users = [{login: 'admin', password: 'admin'}, {login: 'ordinary man', password: '123456'}];
 
 const SignIn: React.FC<SignInProps> = ({passLogin}) => {
     const [isLoginCorrect, setIsLoginCorrect] = useState(true);
@@ -24,20 +24,19 @@ const SignIn: React.FC<SignInProps> = ({passLogin}) => {
         const login = target.login.value;
         const password = target.password.value;
 
-        passLogin(login)
-
         setIsLoginCorrect(false);
 
-        if (users.find(user => user.login==login)) {
+        if (users.find(user => user.login === login)) {
             setIsLoginCorrect(true);
             setIsPasswordCorrect(false);
 
-            if (users.find(user => user.login==login && user.password==password)) {
+            if (users.find(user => user.login === login && user.password === password)) {
                 setIsPasswordCorrect(true);
+                passLogin(login);
                 return navigate('user-board', { replace: false })
             }
 
-            return
+            return;
         }       
     }
 
@@ -58,9 +57,9 @@ const SignIn: React.FC<SignInProps> = ({passLogin}) => {
                 </div>
             </form>
         </div>
-    )
+    ); 
 
-    return signIn
+    return signIn;
 }
 
-export default SignIn
+export default SignIn;
