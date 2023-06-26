@@ -37,14 +37,14 @@ const Card: React.FC<CardProps> = (props) => {
     const Card = (
         <div>
             {
-            !showEditCardForm &&
+                !showEditCardForm &&
                 <div className="card" onClick={callEdit}>
                     <p>{props.cardName}</p>
                     <img src={deleteIcon} alt="delete button" onClick={props.onDelete} />
                 </div>
             }
             {
-            showEditCardForm &&
+                showEditCardForm &&
                 <form onSubmit={editMyCard}>
                     <input type="text" name="cardName" />
                     <button type="submit">Submit</button>

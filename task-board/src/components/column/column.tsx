@@ -86,11 +86,11 @@ const Colunm: React.FC<ColumnProps> = ( props ) => {
                 </Droppable>
                 <div className="addCard">
                     {
-                    !showForm && 
+                        !showForm && 
                         <label onClick={openModal}>+ Add new card</label>
                     }
                     {
-                    showForm && 
+                        showForm && 
                         <AddCard addCard={addCard} closeModal={closeModal} />
                     }
                 </div>
