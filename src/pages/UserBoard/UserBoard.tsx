@@ -1,24 +1,24 @@
-import Header from "../../components/Header/Header";
-import TaskBoard from "../../components/TaskBoard/TaskBoard";
+import { useNavigate } from "react-router-dom";
+import { Header, TaskBoard } from "../../components";
+
 import "./UserBoard.css";
+import { useEffect } from "react";
 
-function getUsers() {
-  // TODO: Add fetching data about users
-  return [];
-}
+export const UserBoard = () => {
+  const navigate = useNavigate();
 
-interface UserBoardProps {
-  login: string;
-}
+  const username = localStorage.getItem("username");
 
-const UserBoard: React.FC<UserBoardProps> = ({ login }) => {
-  const users = getUsers();
+  useEffect(() => {
+    if (!username) {
+      navigate("/auth/sign-in");
+    }
+  }, [username]);
+
   return (
-    <div>
-      <Header login={login} />
+    <div className="user-board">
+      <Header username={username} />
       <TaskBoard />
     </div>
   );
 };
-
-export default UserBoard;

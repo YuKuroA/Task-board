@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import "./Column.css";
-import deleteIcon from "./Delete.svg";
-import Card from "../Card/Card";
-import AddCard from "../AddCard/AddCard";
+import deleteIcon from "../../assets/delete.svg";
+import { Card } from "../Card";
+import { AddCard } from "../AddCard";
 import "typeface-inter";
-import { MyCard } from "../../types/cardtype";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { CardInfo } from "../../models";
+import {
+  DragDropContext,
+  Draggable,
+  DropResult,
+  Droppable,
+} from "react-beautiful-dnd";
 
 interface ColumnProps {
   columnName: string;
@@ -14,7 +19,7 @@ interface ColumnProps {
 
 const Colunm: React.FC<ColumnProps> = (props) => {
   const [showForm, setShowForm] = useState(false);
-  const [cardList, setCardList] = useState<MyCard[]>([]);
+  const [cardList, setCardList] = useState<CardInfo[]>([]);
 
   const openModal = () => {
     setShowForm(true);
@@ -24,7 +29,7 @@ const Colunm: React.FC<ColumnProps> = (props) => {
     setShowForm(false);
   };
 
-  const addCard = (newCard: MyCard) => {
+  const addCard = (newCard: CardInfo) => {
     const newCardList = cardList.concat();
     newCardList.push(newCard);
     setCardList(newCardList);
@@ -35,19 +40,14 @@ const Colunm: React.FC<ColumnProps> = (props) => {
     setCardList(newCardList);
   };
 
-  const editCard = (newCard: MyCard) => {
+  const editCard = (newCard: CardInfo) => {
     const newCardList = cardList.concat();
     const index = newCardList.findIndex((item) => item.id === newCard.id);
     newCardList[index] = newCard;
     setCardList(newCardList);
   };
 
-  const showSuccessSnackbar = () => {
-    // TODO: implement snackbar logic
-    console.log("snackbar");
-  };
-
-  const handleOnDragEnd = (result: any) => {
+  const handleOnDragEnd = (result: DropResult) => {
     if (!result.destination) {
       return;
     }
@@ -84,7 +84,7 @@ const Colunm: React.FC<ColumnProps> = (props) => {
                         {...provided.dragHandleProps}
                       >
                         <Card
-                          cardName={card.cardName}
+                          cardName={card.name}
                           onDelete={() => deleteCard(card.id)}
                           editCard={editCard}
                           id={card.id}

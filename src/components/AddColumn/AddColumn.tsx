@@ -1,15 +1,15 @@
 import React from "react";
-import abandonIcon from "./Abandon.svg";
+import abandonIcon from "../../assets/abandon.svg";
 import "./AddColumn.css";
 import "typeface-inter";
-import { MyColumn } from "../../types/columntype";
+import { ColumnInfo } from "../../models";
 
 interface FormProps {
-  addColumn: (newColumn: MyColumn) => void;
+  addColumn: (newColumn: ColumnInfo) => void;
   closeModal: () => void;
 }
 
-const AddColumn: React.FC<FormProps> = ({ addColumn, closeModal }) => {
+export const AddColumn: React.FC<FormProps> = ({ addColumn, closeModal }) => {
   const createColumn = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -19,7 +19,7 @@ const AddColumn: React.FC<FormProps> = ({ addColumn, closeModal }) => {
 
     addColumn({
       id: crypto.randomUUID(),
-      columnName: target.columnName.value,
+      name: target.columnName.value,
     });
 
     closeModal();
@@ -35,5 +35,3 @@ const AddColumn: React.FC<FormProps> = ({ addColumn, closeModal }) => {
     </form>
   );
 };
-
-export default AddColumn;

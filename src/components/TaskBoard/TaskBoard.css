@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   background-color: #29487c;
-  min-height: 100vh;
+  min-height: calc(100vh - 80px);
 }
 
 .addColumn {

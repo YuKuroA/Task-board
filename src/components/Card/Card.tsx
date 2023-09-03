@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import "./Card.css";
-import deleteIcon from "./Delete.svg";
+import deleteIcon from "../../assets/delete.svg";
 import "typeface-inter";
-import { format } from "path";
-import { MyCard } from "../../types/cardtype";
+import { CardInfo } from "../../models";
 
 interface CardProps {
   id: string;
   cardName: string;
   onDelete: () => void;
-  editCard: (newCard: MyCard) => void;
+  editCard: (newCard: CardInfo) => void;
 }
 
-const Card: React.FC<CardProps> = (props) => {
+export const Card: React.FC<CardProps> = (props) => {
   const [showEditCardForm, setShowEditCardForm] = useState(false);
 
   const callEdit = () => {
@@ -28,7 +27,7 @@ const Card: React.FC<CardProps> = (props) => {
 
     props.editCard({
       id: props.id,
-      cardName: target.cardName.value,
+      name: target.cardName.value,
     });
 
     setShowEditCardForm(false);
@@ -51,5 +50,3 @@ const Card: React.FC<CardProps> = (props) => {
     </div>
   );
 };
-
-export default Card;
