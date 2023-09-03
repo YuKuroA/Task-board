@@ -1,0 +1,31 @@
+.card {
+    width: 240px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #EDEDED;
+    align-items: center;
+}
+
+.card img {
+    width: 14.4px;
+    height: 16px;
+    margin-top: 10px;
+    margin-right: 10.8px;
+    margin-bottom: 9px;
+    margin-left: 10.8px;
+}
+
+.card p {
+    font-family: 'Inter, sans-serif';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-left: 12px;
+    margin-right: 12px;
+    word-wrap: break-word;
+}
