@@ -2,16 +2,12 @@ import "./SignIn.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-interface SignInProps {
-  passLogin: (login: string) => void;
-}
-
 const users = [
   { login: "admin", password: "admin" },
   { login: "ordinary man", password: "123456" },
 ];
 
-const SignIn: React.FC<SignInProps> = ({ passLogin }) => {
+export const SignIn = () => {
   const [isLoginCorrect, setIsLoginCorrect] = useState(true);
   const [isPasswordCorrect, setIsPasswordCorrect] = useState(true);
   const navigate = useNavigate();
@@ -33,11 +29,10 @@ const SignIn: React.FC<SignInProps> = ({ passLogin }) => {
       setIsLoginCorrect(true);
       setIsPasswordCorrect(false);
 
-      if (
-        users.find((user) => user.login === login && user.password === password)
-      ) {
+      if (users.find((user) => user.password === password)) {
         setIsPasswordCorrect(true);
-        passLogin(login);
+        localStorage.setItem("username", login);
+
         return navigate("/user-board", { replace: true });
       }
 
@@ -66,5 +61,3 @@ const SignIn: React.FC<SignInProps> = ({ passLogin }) => {
     </div>
   );
 };
-
-export default SignIn;

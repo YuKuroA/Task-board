@@ -1,15 +1,15 @@
 import React from "react";
-import abandonIcon from "./Abandon.svg";
-import "./AddCard.css";
+import abandonIcon from "../../assets/abandon.svg";
 import "typeface-inter";
-import { MyCard } from "../../types/cardtype";
+import "./AddCard.css";
+import { CardInfo } from "../../models";
 
 interface FormProps {
-  addCard: (newCard: MyCard) => void;
+  addCard: (newCard: CardInfo) => void;
   closeModal: () => void;
 }
 
-const AddCard: React.FC<FormProps> = ({ addCard, closeModal }) => {
+export const AddCard: React.FC<FormProps> = ({ addCard, closeModal }) => {
   const createCard = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -19,7 +19,7 @@ const AddCard: React.FC<FormProps> = ({ addCard, closeModal }) => {
 
     addCard({
       id: crypto.randomUUID(),
-      cardName: target.cardName.value,
+      name: target.cardName.value,
     });
 
     logCardCreation();
@@ -41,5 +41,3 @@ const AddCard: React.FC<FormProps> = ({ addCard, closeModal }) => {
     </form>
   );
 };
-
-export default AddCard;

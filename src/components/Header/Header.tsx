@@ -1,36 +1,34 @@
-import logoIcon from "./Logo.svg";
-import menuIcon from "./Menu.svg";
-import landscapeIcon from "./Group 20.svg";
-import "./Header.css";
 import { useNavigate } from "react-router-dom";
 
-function getUser() {
-  // will return user
-  return {} as any;
+import logoIcon from "../../assets/logo.svg";
+import menuIcon from "../../assets/menu.svg";
+import landscapeIcon from "../../assets/avatar.svg";
+
+import "./Header.css";
+
+interface Props {
+  username: string | null;
 }
 
-interface HeaderProps {
-  login: string;
-}
-
-const Header: React.FC<HeaderProps> = ({ login }) => {
+export const Header = ({ username }: Props) => {
   const navigate = useNavigate();
-  const user = getUser();
+
+  const logout = () => {
+    localStorage.removeItem("username");
+    navigate("/auth/sign-in", { replace: false });
+  };
 
   return (
     <div className="header">
       <div className="logo">
         <img src={logoIcon} alt="logo" />
       </div>
-      {user && user.username && <div>user.username</div>}
       <div className="login">
         <img src={landscapeIcon} alt="landscape" />
-        <label>{login}</label>
-        <label onClick={() => navigate("/", { replace: false })}>LOGOUT</label>
+        <label>{username}</label>
+        <label onClick={logout}>LOGOUT</label>
         <img src={menuIcon} alt="menu" />
       </div>
     </div>
   );
 };
-
-export default Header;
